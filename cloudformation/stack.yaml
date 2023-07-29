@@ -27,12 +27,12 @@ Resources:
         -  !Ref SecurityGroupName
       # TODO: Add properties according to the playbook
       IamInstanceProfile: !Ref InstanceProfile
-    UserData:
-      Fn::Base64: |
-        #!/bin/bash
-        yum update -y
-        amazon-linux-extras install nginx1 -y
-        systemctl enable --now nginx
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          yum update -y
+          amazon-linux-extras install nginx1 -y
+          systemctl enable --now nginx
   InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
@@ -48,3 +48,25 @@ Resources:
       EIP: !Ref EIP
       InstanceId: !Ref Instance
   # TODO: Add RecordSet
+Record:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Ref DomainName
+      Type: A
+      TTL: "60"
+      ResourceRecords:
+        - !Ref EIP
+Outputs:
+  InstanceId:
+    Description: EC2 Instance Id
+    Value: !Ref Instance
+  PublicIP:
+    Description: EC2 Instance Public IP Address
+    Value: !Ref EIP
+  PrivateIP:
+    Description: EC2 Instance Private IP Address
+    Value: !GetAtt Instance.PrivateIp
+  DomainName:
+    Description: Fully Qualified Domain Name
+    Value: !Ref DomainName
