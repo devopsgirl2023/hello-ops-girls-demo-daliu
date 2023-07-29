@@ -5,7 +5,7 @@ run-name: dev-ci
 #     branches:["*"]
 on:
   workflow_run:
-    # workflows: ["hello"]
+    workflows: ["hello"]
     branches: ["*"]
     # types:
     #   - completed
@@ -28,7 +28,7 @@ jobs:
         env:
           REGISTRY: ${{ steps.aws-auth.outputs.registry }}
           REPOSITORY: devopsgirl2023/hello-ops-girl
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: ${{ github.sha }}-daliu
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
