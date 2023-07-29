@@ -48,7 +48,7 @@ Resources:
       EIP: !Ref EIP
       InstanceId: !Ref Instance
   # TODO: Add RecordSet
-Record:
+  Record:
     Type: AWS::Route53::RecordSet
     Properties:
       HostedZoneId: !Ref HostedZoneId
