@@ -26,7 +26,7 @@ Resources:
       SecurityGroups: 
         -  !Ref SecurityGroupName
       # TODO: Add properties according to the playbook
-    IamInstanceProfile: !Ref InstanceProfile
+      IamInstanceProfile: !Ref InstanceProfile
     UserData:
       Fn::Base64: |
         #!/bin/bash
