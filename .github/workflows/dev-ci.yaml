@@ -5,10 +5,10 @@ run-name: dev-ci
 #     branches:["*"]
 on:
   workflow_run:
-    workflows: ["hello"]
+    # workflows: ["hello"]
     branches: ["*"]
-    types:
-      - completed
+    # types:
+    #   - completed
 env:
   AWS_ACCOUNT: "494526681395"
   AWS_REGION: "ap-southeast-1"
