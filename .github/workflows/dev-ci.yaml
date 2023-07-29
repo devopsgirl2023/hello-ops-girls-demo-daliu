@@ -1,12 +1,12 @@
 name: hello ops girls dev pipeline
 run-name: dev-ci
-# on:
-#   push:-----
-#     branches:["*"]
 on:
-  workflow_run:
-    workflows: ["hello"]
+  push:
     branches: ["*"]
+# on:
+#   workflow_run:
+#     workflows: ["hello"]
+#     branches: ["*"]
     # types:
     #   - completed
 env:
