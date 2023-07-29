@@ -20,13 +20,13 @@ Resources:
   Instance:
     Type: AWS::EC2::Instance
     Properties:
-    ImageId: ami-09964535fc01efa5f
-    InstanceType: t2.micro
-    KeyName: devops-girls-2023
-    SecurityGroups: 
-      - !Ref SecurityGroupName
+      ImageId: ami-09964535fc01efa5f
+      InstanceType: t2.micro
+      KeyName: devops-girls-2023
+      SecurityGroups: 
+        -  !Ref SecurityGroupName
       # TODO: Add properties according to the playbook
-      IamInstanceProfile: !Ref InstanceProfile
+    IamInstanceProfile: !Ref InstanceProfile
       UserData:
         Fn::Base64: |
           #!/bin/bash
