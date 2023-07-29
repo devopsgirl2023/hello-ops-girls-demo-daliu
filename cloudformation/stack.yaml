@@ -27,12 +27,12 @@ Resources:
         -  !Ref SecurityGroupName
       # TODO: Add properties according to the playbook
     IamInstanceProfile: !Ref InstanceProfile
-      UserData:
-        Fn::Base64: |
-          #!/bin/bash
-          yum update -y
-          amazon-linux-extras install nginx1 -y
-          systemctl enable --now nginx
+    UserData:
+      Fn::Base64: |
+        #!/bin/bash
+        yum update -y
+        amazon-linux-extras install nginx1 -y
+        systemctl enable --now nginx
   InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
